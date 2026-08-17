@@ -1,0 +1,481 @@
+build	Set up job	﻿2026-08-17T19:47:09.8802309Z Current runner version: '2.336.0'
+build	Set up job	2026-08-17T19:47:09.8829833Z ##[group]Runner Image Provisioner
+build	Set up job	2026-08-17T19:47:09.8830807Z Hosted Compute Agent
+build	Set up job	2026-08-17T19:47:09.8831533Z Version: 20260729.566
+build	Set up job	2026-08-17T19:47:09.8832204Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
+build	Set up job	2026-08-17T19:47:09.8832971Z Build Date: 2026-07-29T19:17:02Z
+build	Set up job	2026-08-17T19:47:09.8834190Z Worker ID: {09f1fd74-9e00-4e22-9387-8e72240a4e57}
+build	Set up job	2026-08-17T19:47:09.8834995Z Azure Region: centralus
+build	Set up job	2026-08-17T19:47:09.8835912Z ##[endgroup]
+build	Set up job	2026-08-17T19:47:09.8837497Z ##[group]Operating System
+build	Set up job	2026-08-17T19:47:09.8838166Z Ubuntu
+build	Set up job	2026-08-17T19:47:09.8838796Z 24.04.4
+build	Set up job	2026-08-17T19:47:09.8839358Z LTS
+build	Set up job	2026-08-17T19:47:09.8839941Z ##[endgroup]
+build	Set up job	2026-08-17T19:47:09.8840562Z ##[group]Runner Image
+build	Set up job	2026-08-17T19:47:09.8841227Z Image: ubuntu-24.04
+build	Set up job	2026-08-17T19:47:09.8841856Z Version: 20260810.271.1
+build	Set up job	2026-08-17T19:47:09.8842994Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260810.271/images/ubuntu/Ubuntu2404-Readme.md
+build	Set up job	2026-08-17T19:47:09.8844789Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260810.271
+build	Set up job	2026-08-17T19:47:09.8846115Z ##[endgroup]
+build	Set up job	2026-08-17T19:47:09.8847459Z ##[group]GITHUB_TOKEN Permissions
+build	Set up job	2026-08-17T19:47:09.8849820Z Contents: read
+build	Set up job	2026-08-17T19:47:09.8850455Z Metadata: read
+build	Set up job	2026-08-17T19:47:09.8851193Z Packages: read
+build	Set up job	2026-08-17T19:47:09.8851773Z ##[endgroup]
+build	Set up job	2026-08-17T19:47:09.8854472Z Secret source: Actions
+build	Set up job	2026-08-17T19:47:09.8856140Z Prepare workflow directory
+build	Set up job	2026-08-17T19:47:09.9312628Z Prepare all required actions
+build	Set up job	2026-08-17T19:47:09.9361708Z Getting action download info
+build	Set up job	2026-08-17T19:47:10.1804931Z Download action repository 'actions/checkout@v2' (SHA:0717577d45739eb3c851188b29f50ed6c0b2194e)
+build	Set up job	2026-08-17T19:47:11.4495775Z Complete job name: build
+build	Initialize containers	﻿2026-08-17T19:47:11.5071504Z ##[group]Checking docker version
+build	Initialize containers	2026-08-17T19:47:11.5086221Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+build	Initialize containers	2026-08-17T19:47:11.7317148Z '1.48'
+build	Initialize containers	2026-08-17T19:47:11.7336180Z Docker daemon API version: '1.48'
+build	Initialize containers	2026-08-17T19:47:11.7337842Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+build	Initialize containers	2026-08-17T19:47:11.7525913Z '1.48'
+build	Initialize containers	2026-08-17T19:47:11.7530130Z Docker client API version: '1.48'
+build	Initialize containers	2026-08-17T19:47:11.7538210Z ##[endgroup]
+build	Initialize containers	2026-08-17T19:47:11.7541796Z ##[group]Clean up resources from previous jobs
+build	Initialize containers	2026-08-17T19:47:11.7548996Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=ce1e07"
+build	Initialize containers	2026-08-17T19:47:11.7714977Z ##[command]/usr/bin/docker network prune --force --filter "label=ce1e07"
+build	Initialize containers	2026-08-17T19:47:11.7858758Z ##[endgroup]
+build	Initialize containers	2026-08-17T19:47:11.7859851Z ##[group]Create local container network
+build	Initialize containers	2026-08-17T19:47:11.7871476Z ##[command]/usr/bin/docker network create --label ce1e07 github_network_1d5c6b439cc248ce99e2a7290cfc3df1
+build	Initialize containers	2026-08-17T19:47:11.8430884Z 18e410756b8c7d21e7273df22ca78f1135e32e593ceb481fc1ad2f9eb2958bfb
+build	Initialize containers	2026-08-17T19:47:11.8453739Z ##[endgroup]
+build	Initialize containers	2026-08-17T19:47:11.8479548Z ##[group]Starting job container
+build	Initialize containers	2026-08-17T19:47:11.8501877Z ##[command]/usr/bin/docker pull python:3.9-slim
+build	Initialize containers	2026-08-17T19:47:12.3978422Z 3.9-slim: Pulling from library/python
+build	Initialize containers	2026-08-17T19:47:12.5378568Z 38513bd72563: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:12.5381197Z b3ec39b36ae8: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:12.5381716Z fc7443084902: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:12.5382185Z ea56f685404a: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:12.5382656Z ea56f685404a: Waiting
+build	Initialize containers	2026-08-17T19:47:12.7807225Z b3ec39b36ae8: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:12.7809541Z b3ec39b36ae8: Download complete
+build	Initialize containers	2026-08-17T19:47:12.8349865Z fc7443084902: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:12.8352631Z fc7443084902: Download complete
+build	Initialize containers	2026-08-17T19:47:12.8731995Z 38513bd72563: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:12.8732787Z 38513bd72563: Download complete
+build	Initialize containers	2026-08-17T19:47:12.9032075Z ea56f685404a: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:12.9033168Z ea56f685404a: Download complete
+build	Initialize containers	2026-08-17T19:47:13.8389776Z 38513bd72563: Pull complete
+build	Initialize containers	2026-08-17T19:47:15.2040752Z b3ec39b36ae8: Pull complete
+build	Initialize containers	2026-08-17T19:47:15.9107527Z fc7443084902: Pull complete
+build	Initialize containers	2026-08-17T19:47:15.9230604Z ea56f685404a: Pull complete
+build	Initialize containers	2026-08-17T19:47:15.9267845Z Digest: sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf1731b1b
+build	Initialize containers	2026-08-17T19:47:15.9280241Z Status: Downloaded newer image for python:3.9-slim
+build	Initialize containers	2026-08-17T19:47:15.9288346Z docker.io/library/python:3.9-slim
+build	Initialize containers	2026-08-17T19:47:15.9372533Z ##[command]/usr/bin/docker create --name fd6f502291a5475cb0ab3a6560372798_python39slim_f031b6 --label ce1e07 --workdir /__w/devops-capstone-project/devops-capstone-project --network github_network_1d5c6b439cc248ce99e2a7290cfc3df1  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" python:3.9-slim "-f" "/dev/null"
+build	Initialize containers	2026-08-17T19:47:15.9644567Z a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Initialize containers	2026-08-17T19:47:15.9670305Z ##[command]/usr/bin/docker start a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Initialize containers	2026-08-17T19:47:16.1527619Z a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Initialize containers	2026-08-17T19:47:16.1552535Z ##[command]/usr/bin/docker ps --all --filter id=a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+build	Initialize containers	2026-08-17T19:47:16.1672842Z a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af Up Less than a second
+build	Initialize containers	2026-08-17T19:47:16.1692555Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Initialize containers	2026-08-17T19:47:16.1814800Z HOME=/github/home
+build	Initialize containers	2026-08-17T19:47:16.1815497Z GITHUB_ACTIONS=true
+build	Initialize containers	2026-08-17T19:47:16.1815759Z CI=true
+build	Initialize containers	2026-08-17T19:47:16.1816124Z PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+build	Initialize containers	2026-08-17T19:47:16.1816765Z LANG=C.UTF-8
+build	Initialize containers	2026-08-17T19:47:16.1817127Z GPG_KEY=E3FF2839C048B25C084DEBE9B26995E310250568
+build	Initialize containers	2026-08-17T19:47:16.1817654Z PYTHON_VERSION=3.9.25
+build	Initialize containers	2026-08-17T19:47:16.1827943Z PYTHON_SHA256=00e07d7c0f2f0cc002432d1ee84d2a40dae404a99303e3f97701c10966c91834
+build	Initialize containers	2026-08-17T19:47:16.1837264Z ##[endgroup]
+build	Initialize containers	2026-08-17T19:47:16.1838595Z ##[group]Starting postgres service container
+build	Initialize containers	2026-08-17T19:47:16.1840093Z ##[command]/usr/bin/docker pull postgres:alpine
+build	Initialize containers	2026-08-17T19:47:16.6862022Z alpine: Pulling from library/postgres
+build	Initialize containers	2026-08-17T19:47:16.8500101Z 55afa1ecc21d: Already exists
+build	Initialize containers	2026-08-17T19:47:16.8514279Z bd05923489c0: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8514724Z 0e82e52c5036: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8515327Z bec14b79af98: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8515766Z fd2a511ae43f: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8516133Z af7fba232b37: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8516515Z 55d8df41fe8b: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8516865Z 1b9806980890: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8517213Z 94ffa018ff18: Pulling fs layer
+build	Initialize containers	2026-08-17T19:47:16.8517561Z fd2a511ae43f: Waiting
+build	Initialize containers	2026-08-17T19:47:16.8517887Z af7fba232b37: Waiting
+build	Initialize containers	2026-08-17T19:47:16.8518185Z 55d8df41fe8b: Waiting
+build	Initialize containers	2026-08-17T19:47:16.8518481Z 1b9806980890: Waiting
+build	Initialize containers	2026-08-17T19:47:16.8518729Z 94ffa018ff18: Waiting
+build	Initialize containers	2026-08-17T19:47:17.0022865Z bec14b79af98: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.0023734Z bec14b79af98: Download complete
+build	Initialize containers	2026-08-17T19:47:17.0038430Z bd05923489c0: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.0039502Z bd05923489c0: Download complete
+build	Initialize containers	2026-08-17T19:47:17.0192077Z bd05923489c0: Pull complete
+build	Initialize containers	2026-08-17T19:47:17.0671542Z 0e82e52c5036: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.0672636Z 0e82e52c5036: Download complete
+build	Initialize containers	2026-08-17T19:47:17.1005028Z 0e82e52c5036: Pull complete
+build	Initialize containers	2026-08-17T19:47:17.1075592Z bec14b79af98: Pull complete
+build	Initialize containers	2026-08-17T19:47:17.1292729Z af7fba232b37: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.1296048Z af7fba232b37: Download complete
+build	Initialize containers	2026-08-17T19:47:17.2049107Z 55d8df41fe8b: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.2049624Z 55d8df41fe8b: Download complete
+build	Initialize containers	2026-08-17T19:47:17.2832026Z 1b9806980890: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.2833052Z 1b9806980890: Download complete
+build	Initialize containers	2026-08-17T19:47:17.3361168Z 94ffa018ff18: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.6556838Z fd2a511ae43f: Verifying Checksum
+build	Initialize containers	2026-08-17T19:47:17.6557240Z fd2a511ae43f: Download complete
+build	Initialize containers	2026-08-17T19:47:20.1986393Z fd2a511ae43f: Pull complete
+build	Initialize containers	2026-08-17T19:47:20.2555455Z af7fba232b37: Pull complete
+build	Initialize containers	2026-08-17T19:47:20.2657701Z 55d8df41fe8b: Pull complete
+build	Initialize containers	2026-08-17T19:47:20.2743175Z 1b9806980890: Pull complete
+build	Initialize containers	2026-08-17T19:47:20.2833011Z 94ffa018ff18: Pull complete
+build	Initialize containers	2026-08-17T19:47:20.2866009Z Digest: sha256:d3e1620b530c944afa6e887d22eb899824da68e19c52024bf98f5220c88a65b2
+build	Initialize containers	2026-08-17T19:47:20.2874662Z Status: Downloaded newer image for postgres:alpine
+build	Initialize containers	2026-08-17T19:47:20.2882233Z docker.io/library/postgres:alpine
+build	Initialize containers	2026-08-17T19:47:20.2900735Z ##[command]/usr/bin/docker create --name e5b2d34c085645fcb551fe6dfc4f57dd_postgresalpine_1e1985 --label ce1e07 --network github_network_1d5c6b439cc248ce99e2a7290cfc3df1 --network-alias postgres -p 5432:5432 --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5 -e "POSTGRES_PASSWORD=pgs3cr3t" -e "POSTGRES_DB=testdb" -e GITHUB_ACTIONS=true -e CI=true postgres:alpine
+build	Initialize containers	2026-08-17T19:47:20.3118794Z 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:20.3134148Z ##[command]/usr/bin/docker start 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:20.4697650Z 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:20.4711581Z ##[command]/usr/bin/docker ps --all --filter id=4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+build	Initialize containers	2026-08-17T19:47:20.4872982Z 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355 Up Less than a second (health: starting)
+build	Initialize containers	2026-08-17T19:47:20.4892645Z ##[command]/usr/bin/docker port 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:20.5034657Z 5432/tcp -> 0.0.0.0:5432
+build	Initialize containers	2026-08-17T19:47:20.5035617Z 5432/tcp -> [::]:5432
+build	Initialize containers	2026-08-17T19:47:20.5084674Z ##[endgroup]
+build	Initialize containers	2026-08-17T19:47:20.5094057Z ##[group]Waiting for all services to be ready
+build	Initialize containers	2026-08-17T19:47:20.5104432Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:20.5247523Z starting
+build	Initialize containers	2026-08-17T19:47:20.5265834Z postgres service is starting, waiting 2 seconds before checking again.
+build	Initialize containers	2026-08-17T19:47:22.5275505Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:22.5404364Z starting
+build	Initialize containers	2026-08-17T19:47:22.5418082Z postgres service is starting, waiting 4 seconds before checking again.
+build	Initialize containers	2026-08-17T19:47:26.6167672Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:26.6296465Z starting
+build	Initialize containers	2026-08-17T19:47:26.6310125Z postgres service is starting, waiting 8 seconds before checking again.
+build	Initialize containers	2026-08-17T19:47:35.6181427Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Initialize containers	2026-08-17T19:47:35.6311153Z healthy
+build	Initialize containers	2026-08-17T19:47:35.6328291Z postgres service is healthy.
+build	Initialize containers	2026-08-17T19:47:35.6329110Z ##[endgroup]
+build	Checkout	﻿2026-08-17T19:47:35.6604941Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Checkout	2026-08-17T19:47:35.6613053Z ##[group]Run actions/checkout@v2
+build	Checkout	2026-08-17T19:47:35.6613462Z with:
+build	Checkout	2026-08-17T19:47:35.6613733Z   repository: Tamilarasan2007/devops-capstone-project
+build	Checkout	2026-08-17T19:47:35.6616697Z   token: ***
+build	Checkout	2026-08-17T19:47:35.6616920Z   ssh-strict: true
+build	Checkout	2026-08-17T19:47:35.6617147Z   persist-credentials: true
+build	Checkout	2026-08-17T19:47:35.6617389Z   clean: true
+build	Checkout	2026-08-17T19:47:35.6617581Z   fetch-depth: 1
+build	Checkout	2026-08-17T19:47:35.6617774Z   lfs: false
+build	Checkout	2026-08-17T19:47:35.6617960Z   submodules: false
+build	Checkout	2026-08-17T19:47:35.6618172Z   set-safe-directory: true
+build	Checkout	2026-08-17T19:47:35.6618421Z   allow-unsafe-pr-checkout: false
+build	Checkout	2026-08-17T19:47:35.6618847Z ##[endgroup]
+build	Checkout	2026-08-17T19:47:35.6758260Z ##[command]/usr/bin/docker exec  a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af sh -c "cat /etc/*release | grep ^ID"
+build	Checkout	2026-08-17T19:47:35.8807559Z (node:15) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Checkout	2026-08-17T19:47:35.8808773Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Checkout	2026-08-17T19:47:35.8932138Z Syncing repository: Tamilarasan2007/devops-capstone-project
+build	Checkout	2026-08-17T19:47:35.8934244Z ##[group]Getting Git version info
+build	Checkout	2026-08-17T19:47:35.8934956Z Working directory is '/__w/devops-capstone-project/devops-capstone-project'
+build	Checkout	2026-08-17T19:47:35.8936185Z ##[endgroup]
+build	Checkout	2026-08-17T19:47:35.8936768Z Deleting the contents of '/__w/devops-capstone-project/devops-capstone-project'
+build	Checkout	2026-08-17T19:47:35.8937547Z The repository will be downloaded using the GitHub REST API
+build	Checkout	2026-08-17T19:47:35.8938287Z To create a local Git repository instead, add Git 2.18 or higher to the PATH
+build	Checkout	2026-08-17T19:47:35.8938912Z Downloading the archive
+build	Checkout	2026-08-17T19:47:35.9050258Z (node:15) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+build	Checkout	2026-08-17T19:47:36.3601528Z Writing archive to disk
+build	Checkout	2026-08-17T19:47:36.3611198Z Extracting the archive
+build	Checkout	2026-08-17T19:47:36.3630311Z [command]/usr/bin/tar xz -C /__w/devops-capstone-project/devops-capstone-project/642dd395-2003-4af6-bb47-8ac7c98bd2c2 -f /__w/devops-capstone-project/devops-capstone-project/642dd395-2003-4af6-bb47-8ac7c98bd2c2.tar.gz
+build	Checkout	2026-08-17T19:47:36.3709138Z Resolved version Tamilarasan2007-devops-capstone-project-1cced4e
+build	Install dependencies	﻿2026-08-17T19:47:36.3976668Z ##[group]Run python -m pip install --upgrade pip wheel
+build	Install dependencies	2026-08-17T19:47:36.3977165Z [36;1mpython -m pip install --upgrade pip wheel[0m
+build	Install dependencies	2026-08-17T19:47:36.3977523Z [36;1mpip install -r requirements.txt[0m
+build	Install dependencies	2026-08-17T19:47:36.3980911Z shell: sh -e {0}
+build	Install dependencies	2026-08-17T19:47:36.3981155Z ##[endgroup]
+build	Install dependencies	2026-08-17T19:47:37.9373274Z WARNING: The directory '/github/home/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+build	Install dependencies	2026-08-17T19:47:38.0325778Z Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (23.0.1)
+build	Install dependencies	2026-08-17T19:47:38.1682946Z Collecting pip
+build	Install dependencies	2026-08-17T19:47:38.2172088Z   Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+build	Install dependencies	2026-08-17T19:47:38.2959936Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 23.6 MB/s eta 0:00:00
+build	Install dependencies	2026-08-17T19:47:38.3062950Z Requirement already satisfied: wheel in /usr/local/lib/python3.9/site-packages (0.45.1)
+build	Install dependencies	2026-08-17T19:47:38.3591071Z Collecting wheel
+build	Install dependencies	2026-08-17T19:47:38.3706227Z   Downloading wheel-0.48.0-py3-none-any.whl (33 kB)
+build	Install dependencies	2026-08-17T19:47:38.4186033Z Collecting packaging>=24.0
+build	Install dependencies	2026-08-17T19:47:38.4303367Z   Downloading packaging-26.3-py3-none-any.whl (129 kB)
+build	Install dependencies	2026-08-17T19:47:38.4332277Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 288.9 MB/s eta 0:00:00
+build	Install dependencies	2026-08-17T19:47:38.4865630Z Installing collected packages: pip, packaging, wheel
+build	Install dependencies	2026-08-17T19:47:38.4866739Z   Attempting uninstall: pip
+build	Install dependencies	2026-08-17T19:47:38.4873256Z     Found existing installation: pip 23.0.1
+build	Install dependencies	2026-08-17T19:47:38.6864281Z     Uninstalling pip-23.0.1:
+build	Install dependencies	2026-08-17T19:47:38.6980171Z       Successfully uninstalled pip-23.0.1
+build	Install dependencies	2026-08-17T19:47:39.6931071Z   Attempting uninstall: wheel
+build	Install dependencies	2026-08-17T19:47:39.6936836Z     Found existing installation: wheel 0.45.1
+build	Install dependencies	2026-08-17T19:47:39.7039078Z     Uninstalling wheel-0.45.1:
+build	Install dependencies	2026-08-17T19:47:39.7066308Z       Successfully uninstalled wheel-0.45.1
+build	Install dependencies	2026-08-17T19:47:39.7385949Z Successfully installed packaging-26.3 pip-26.0.1 wheel-0.48.0
+build	Install dependencies	2026-08-17T19:47:39.7388882Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+build	Install dependencies	2026-08-17T19:47:40.1793190Z WARNING: The directory '/github/home/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+build	Install dependencies	2026-08-17T19:47:40.2901588Z Collecting Werkzeug==2.1.2 (from -r requirements.txt (line 2))
+build	Install dependencies	2026-08-17T19:47:40.3453137Z   Downloading Werkzeug-2.1.2-py3-none-any.whl.metadata (4.4 kB)
+build	Install dependencies	2026-08-17T19:47:40.7091086Z Collecting SQLAlchemy==1.4.46 (from -r requirements.txt (line 3))
+build	Install dependencies	2026-08-17T19:47:40.7267788Z   Downloading SQLAlchemy-1.4.46-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (10 kB)
+build	Install dependencies	2026-08-17T19:47:40.7656497Z Collecting Flask==2.1.2 (from -r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:40.7832713Z   Downloading Flask-2.1.2-py3-none-any.whl.metadata (3.9 kB)
+build	Install dependencies	2026-08-17T19:47:40.8023458Z Collecting Flask-SQLAlchemy==2.5.1 (from -r requirements.txt (line 7))
+build	Install dependencies	2026-08-17T19:47:40.8185781Z   Downloading Flask_SQLAlchemy-2.5.1-py2.py3-none-any.whl.metadata (3.1 kB)
+build	Install dependencies	2026-08-17T19:47:40.8885459Z Collecting psycopg2-binary==2.9.3 (from -r requirements.txt (line 8))
+build	Install dependencies	2026-08-17T19:47:40.9062218Z   Downloading psycopg2_binary-2.9.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+build	Install dependencies	2026-08-17T19:47:40.9274707Z Collecting python-dotenv==0.20.0 (from -r requirements.txt (line 9))
+build	Install dependencies	2026-08-17T19:47:40.9662070Z   Downloading python_dotenv-0.20.0-py3-none-any.whl.metadata (19 kB)
+build	Install dependencies	2026-08-17T19:47:40.9918459Z Collecting gunicorn==20.1.0 (from -r requirements.txt (line 12))
+build	Install dependencies	2026-08-17T19:47:41.0107956Z   Downloading gunicorn-20.1.0-py3-none-any.whl.metadata (3.8 kB)
+build	Install dependencies	2026-08-17T19:47:41.0285507Z Collecting honcho==1.1.0 (from -r requirements.txt (line 13))
+build	Install dependencies	2026-08-17T19:47:41.0462521Z   Downloading honcho-1.1.0-py2.py3-none-any.whl.metadata (3.4 kB)
+build	Install dependencies	2026-08-17T19:47:41.0824029Z Collecting pylint==2.14.0 (from -r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:41.1000875Z   Downloading pylint-2.14.0-py3-none-any.whl.metadata (9.6 kB)
+build	Install dependencies	2026-08-17T19:47:41.1516891Z Collecting flake8==4.0.1 (from -r requirements.txt (line 17))
+build	Install dependencies	2026-08-17T19:47:41.1673151Z   Downloading flake8-4.0.1-py2.py3-none-any.whl.metadata (4.0 kB)
+build	Install dependencies	2026-08-17T19:47:41.2254480Z Collecting black==22.3.0 (from -r requirements.txt (line 18))
+build	Install dependencies	2026-08-17T19:47:41.2440253Z   Downloading black-22.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (45 kB)
+build	Install dependencies	2026-08-17T19:47:41.2767957Z Collecting nose==1.3.7 (from -r requirements.txt (line 21))
+build	Install dependencies	2026-08-17T19:47:41.2930078Z   Downloading nose-1.3.7-py3-none-any.whl.metadata (1.7 kB)
+build	Install dependencies	2026-08-17T19:47:41.3288672Z Collecting pinocchio==0.4.3 (from -r requirements.txt (line 22))
+build	Install dependencies	2026-08-17T19:47:41.3514468Z   Downloading pinocchio-0.4.3-py3-none-any.whl.metadata (975 bytes)
+build	Install dependencies	2026-08-17T19:47:41.3716746Z Collecting factory-boy==2.12.0 (from -r requirements.txt (line 23))
+build	Install dependencies	2026-08-17T19:47:41.3879992Z   Downloading factory_boy-2.12.0-py2.py3-none-any.whl.metadata (12 kB)
+build	Install dependencies	2026-08-17T19:47:41.8618678Z Collecting coverage==6.3.2 (from -r requirements.txt (line 26))
+build	Install dependencies	2026-08-17T19:47:41.8789074Z   Downloading coverage-6.3.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.7 kB)
+build	Install dependencies	2026-08-17T19:47:41.9007426Z Collecting httpie==3.2.1 (from -r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:41.9175868Z   Downloading httpie-3.2.1-py3-none-any.whl.metadata (7.1 kB)
+build	Install dependencies	2026-08-17T19:47:42.0816918Z Collecting greenlet!=0.4.17 (from SQLAlchemy==1.4.46->-r requirements.txt (line 3))
+build	Install dependencies	2026-08-17T19:47:42.0983872Z   Downloading greenlet-3.2.5-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+build	Install dependencies	2026-08-17T19:47:42.1231381Z Collecting Jinja2>=3.0 (from Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:42.1392651Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+build	Install dependencies	2026-08-17T19:47:42.1572177Z Collecting itsdangerous>=2.0 (from Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:42.1733620Z   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+build	Install dependencies	2026-08-17T19:47:42.1962122Z Collecting click>=8.0 (from Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:42.2123171Z   Downloading click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+build	Install dependencies	2026-08-17T19:47:42.2471849Z Collecting importlib-metadata>=3.6.0 (from Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:42.2634848Z   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+build	Install dependencies	2026-08-17T19:47:42.2804143Z Requirement already satisfied: setuptools>=3.0 in /usr/local/lib/python3.9/site-packages (from gunicorn==20.1.0->-r requirements.txt (line 12)) (79.0.1)
+build	Install dependencies	2026-08-17T19:47:42.2992724Z Collecting dill>=0.2 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.3153500Z   Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+build	Install dependencies	2026-08-17T19:47:42.3411749Z Collecting platformdirs>=2.2.0 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.3573803Z   Downloading platformdirs-4.4.0-py3-none-any.whl.metadata (12 kB)
+build	Install dependencies	2026-08-17T19:47:42.3956739Z Collecting astroid<=2.12.0-dev0,>=2.11.5 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.4120255Z   Downloading astroid-2.11.7-py3-none-any.whl.metadata (4.7 kB)
+build	Install dependencies	2026-08-17T19:47:42.4522183Z Collecting isort<6,>=4.2.5 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.4685421Z   Downloading isort-5.13.2-py3-none-any.whl.metadata (12 kB)
+build	Install dependencies	2026-08-17T19:47:42.4891442Z Collecting mccabe<0.8,>=0.6 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.5058107Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+build	Install dependencies	2026-08-17T19:47:42.5300433Z Collecting tomlkit>=0.10.1 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.5463027Z   Downloading tomlkit-0.15.1-py3-none-any.whl.metadata (3.3 kB)
+build	Install dependencies	2026-08-17T19:47:42.5707155Z Collecting typing-extensions>=3.10.0 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.5869199Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+build	Install dependencies	2026-08-17T19:47:42.6156839Z Collecting tomli>=1.1.0 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.6319794Z   Downloading tomli-2.4.1-py3-none-any.whl.metadata (10 kB)
+build	Install dependencies	2026-08-17T19:47:42.6348502Z Collecting mccabe<0.8,>=0.6 (from pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:42.6511144Z   Downloading mccabe-0.6.1-py2.py3-none-any.whl.metadata (4.3 kB)
+build	Install dependencies	2026-08-17T19:47:42.6687263Z Collecting pycodestyle<2.9.0,>=2.8.0 (from flake8==4.0.1->-r requirements.txt (line 17))
+build	Install dependencies	2026-08-17T19:47:42.6860483Z   Downloading pycodestyle-2.8.0-py2.py3-none-any.whl.metadata (31 kB)
+build	Install dependencies	2026-08-17T19:47:42.7075697Z Collecting pyflakes<2.5.0,>=2.4.0 (from flake8==4.0.1->-r requirements.txt (line 17))
+build	Install dependencies	2026-08-17T19:47:42.7235932Z   Downloading pyflakes-2.4.0-py2.py3-none-any.whl.metadata (3.9 kB)
+build	Install dependencies	2026-08-17T19:47:42.7483416Z Collecting pathspec>=0.9.0 (from black==22.3.0->-r requirements.txt (line 18))
+build	Install dependencies	2026-08-17T19:47:42.7644804Z   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+build	Install dependencies	2026-08-17T19:47:42.7817005Z Collecting mypy-extensions>=0.4.3 (from black==22.3.0->-r requirements.txt (line 18))
+build	Install dependencies	2026-08-17T19:47:42.7977853Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+build	Install dependencies	2026-08-17T19:47:42.8195928Z Collecting colorama (from pinocchio==0.4.3->-r requirements.txt (line 22))
+build	Install dependencies	2026-08-17T19:47:42.8356602Z   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+build	Install dependencies	2026-08-17T19:47:42.9828035Z Collecting Faker>=0.7.0 (from factory-boy==2.12.0->-r requirements.txt (line 23))
+build	Install dependencies	2026-08-17T19:47:42.9996494Z   Downloading faker-37.12.0-py3-none-any.whl.metadata (15 kB)
+build	Install dependencies	2026-08-17T19:47:43.0030174Z Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (from httpie==3.2.1->-r requirements.txt (line 29)) (26.0.1)
+build	Install dependencies	2026-08-17T19:47:43.1365732Z Collecting charset-normalizer>=2.0.0 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.1536037Z   Downloading charset_normalizer-3.5.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (45 kB)
+build	Install dependencies	2026-08-17T19:47:43.1767221Z Collecting defusedxml>=0.6.0 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.1921577Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+build	Install dependencies	2026-08-17T19:47:43.2240608Z Collecting requests>=2.22.0 (from requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.2403964Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+build	Install dependencies	2026-08-17T19:47:43.2668650Z Collecting Pygments>=2.5.2 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.2838230Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+build	Install dependencies	2026-08-17T19:47:43.3018361Z Collecting requests-toolbelt>=0.9.1 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.3180999Z   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+build	Install dependencies	2026-08-17T19:47:43.6358710Z Collecting multidict>=4.7.0 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.6527261Z   Downloading multidict-6.7.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+build	Install dependencies	2026-08-17T19:47:43.6960618Z Collecting rich>=9.10.0 (from httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:43.7124101Z   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+build	Install dependencies	2026-08-17T19:47:43.7548248Z Collecting lazy-object-proxy>=1.4.0 (from astroid<=2.12.0-dev0,>=2.11.5->pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:43.7924942Z   Downloading lazy_object_proxy-1.12.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.1 kB)
+build	Install dependencies	2026-08-17T19:47:44.1107183Z Collecting wrapt<2,>=1.11 (from astroid<=2.12.0-dev0,>=2.11.5->pylint==2.14.0->-r requirements.txt (line 16))
+build	Install dependencies	2026-08-17T19:47:44.1302613Z   Downloading wrapt-1.17.3-cp39-cp39-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.4 kB)
+build	Install dependencies	2026-08-17T19:47:44.1577150Z Collecting tzdata (from Faker>=0.7.0->factory-boy==2.12.0->-r requirements.txt (line 23))
+build	Install dependencies	2026-08-17T19:47:44.1742464Z   Downloading tzdata-2026.3-py2.py3-none-any.whl.metadata (1.4 kB)
+build	Install dependencies	2026-08-17T19:47:44.2863075Z Collecting zipp>=3.20 (from importlib-metadata>=3.6.0->Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:44.3031813Z   Downloading zipp-3.23.1-py3-none-any.whl.metadata (3.6 kB)
+build	Install dependencies	2026-08-17T19:47:44.3657670Z Collecting MarkupSafe>=2.0 (from Jinja2>=3.0->Flask==2.1.2->-r requirements.txt (line 6))
+build	Install dependencies	2026-08-17T19:47:44.3825417Z   Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+build	Install dependencies	2026-08-17T19:47:44.4185240Z Collecting idna<4,>=2.5 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.4349645Z   Downloading idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+build	Install dependencies	2026-08-17T19:47:44.4679421Z Collecting urllib3<3,>=1.21.1 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.4845755Z   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+build	Install dependencies	2026-08-17T19:47:44.5122939Z Collecting certifi>=2017.4.17 (from requests>=2.22.0->requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.5286892Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+build	Install dependencies	2026-08-17T19:47:44.5544508Z Collecting PySocks!=1.5.7,>=1.5.6 (from requests[socks]>=2.22.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.5707584Z   Downloading PySocks-1.7.1-py3-none-any.whl.metadata (13 kB)
+build	Install dependencies	2026-08-17T19:47:44.5928252Z Collecting markdown-it-py>=2.2.0 (from rich>=9.10.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.6091218Z   Downloading markdown_it_py-3.0.0-py3-none-any.whl.metadata (6.9 kB)
+build	Install dependencies	2026-08-17T19:47:44.6330193Z Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=9.10.0->httpie==3.2.1->-r requirements.txt (line 29))
+build	Install dependencies	2026-08-17T19:47:44.6491188Z   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+build	Install dependencies	2026-08-17T19:47:44.6817211Z Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)
+build	Install dependencies	2026-08-17T19:47:44.7277140Z Downloading SQLAlchemy-1.4.46-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.6 MB)
+build	Install dependencies	2026-08-17T19:47:44.7924368Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 29.3 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:44.8134239Z Downloading Flask-2.1.2-py3-none-any.whl (95 kB)
+build	Install dependencies	2026-08-17T19:47:44.8302993Z Downloading Flask_SQLAlchemy-2.5.1-py2.py3-none-any.whl (17 kB)
+build	Install dependencies	2026-08-17T19:47:44.8474626Z Downloading psycopg2_binary-2.9.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+build	Install dependencies	2026-08-17T19:47:44.8844151Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 80.5 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:44.9198782Z Downloading python_dotenv-0.20.0-py3-none-any.whl (17 kB)
+build	Install dependencies	2026-08-17T19:47:44.9362542Z Downloading gunicorn-20.1.0-py3-none-any.whl (79 kB)
+build	Install dependencies	2026-08-17T19:47:44.9743175Z Downloading honcho-1.1.0-py2.py3-none-any.whl (21 kB)
+build	Install dependencies	2026-08-17T19:47:44.9948534Z Downloading pylint-2.14.0-py3-none-any.whl (485 kB)
+build	Install dependencies	2026-08-17T19:47:45.0125331Z Downloading flake8-4.0.1-py2.py3-none-any.whl (64 kB)
+build	Install dependencies	2026-08-17T19:47:45.0302672Z Downloading black-22.3.0-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.5 MB)
+build	Install dependencies	2026-08-17T19:47:45.0550176Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 55.7 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:45.0713635Z Downloading nose-1.3.7-py3-none-any.whl (154 kB)
+build	Install dependencies	2026-08-17T19:47:45.0883591Z Downloading pinocchio-0.4.3-py3-none-any.whl (12 kB)
+build	Install dependencies	2026-08-17T19:47:45.1047697Z Downloading factory_boy-2.12.0-py2.py3-none-any.whl (36 kB)
+build	Install dependencies	2026-08-17T19:47:45.1283556Z Downloading coverage-6.3.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (210 kB)
+build	Install dependencies	2026-08-17T19:47:45.1452779Z Downloading httpie-3.2.1-py3-none-any.whl (124 kB)
+build	Install dependencies	2026-08-17T19:47:45.1628572Z Downloading astroid-2.11.7-py3-none-any.whl (251 kB)
+build	Install dependencies	2026-08-17T19:47:45.1800505Z Downloading isort-5.13.2-py3-none-any.whl (92 kB)
+build	Install dependencies	2026-08-17T19:47:45.1965468Z Downloading mccabe-0.6.1-py2.py3-none-any.whl (8.6 kB)
+build	Install dependencies	2026-08-17T19:47:45.2132563Z Downloading pycodestyle-2.8.0-py2.py3-none-any.whl (42 kB)
+build	Install dependencies	2026-08-17T19:47:45.2300385Z Downloading pyflakes-2.4.0-py2.py3-none-any.whl (69 kB)
+build	Install dependencies	2026-08-17T19:47:45.2470439Z Downloading wrapt-1.17.3-cp39-cp39-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (81 kB)
+build	Install dependencies	2026-08-17T19:47:45.2639359Z Downloading charset_normalizer-3.5.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (262 kB)
+build	Install dependencies	2026-08-17T19:47:45.2815895Z Downloading click-8.1.8-py3-none-any.whl (98 kB)
+build	Install dependencies	2026-08-17T19:47:45.2989054Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+build	Install dependencies	2026-08-17T19:47:45.3172098Z Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+build	Install dependencies	2026-08-17T19:47:45.3341281Z Downloading faker-37.12.0-py3-none-any.whl (2.0 MB)
+build	Install dependencies	2026-08-17T19:47:45.3434294Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 281.5 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:45.3615260Z Downloading greenlet-3.2.5-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+build	Install dependencies	2026-08-17T19:47:45.3646305Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 587.5/587.5 kB 658.5 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:45.3808951Z Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+build	Install dependencies	2026-08-17T19:47:45.3970868Z Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+build	Install dependencies	2026-08-17T19:47:45.4134717Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+build	Install dependencies	2026-08-17T19:47:45.4302989Z Downloading lazy_object_proxy-1.12.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (66 kB)
+build	Install dependencies	2026-08-17T19:47:45.4466812Z Downloading markupsafe-3.0.3-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (20 kB)
+build	Install dependencies	2026-08-17T19:47:45.4633599Z Downloading multidict-6.7.1-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (240 kB)
+build	Install dependencies	2026-08-17T19:47:45.4801422Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+build	Install dependencies	2026-08-17T19:47:45.4964736Z Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+build	Install dependencies	2026-08-17T19:47:45.5129416Z Downloading platformdirs-4.4.0-py3-none-any.whl (18 kB)
+build	Install dependencies	2026-08-17T19:47:45.5298897Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+build	Install dependencies	2026-08-17T19:47:45.5342298Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 682.7 MB/s  0:00:00
+build	Install dependencies	2026-08-17T19:47:45.5507769Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+build	Install dependencies	2026-08-17T19:47:45.5672421Z Downloading idna-3.18-py3-none-any.whl (65 kB)
+build	Install dependencies	2026-08-17T19:47:45.5837126Z Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+build	Install dependencies	2026-08-17T19:47:45.6004193Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+build	Install dependencies	2026-08-17T19:47:45.6167851Z Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+build	Install dependencies	2026-08-17T19:47:45.6334429Z Downloading PySocks-1.7.1-py3-none-any.whl (16 kB)
+build	Install dependencies	2026-08-17T19:47:45.6503251Z Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+build	Install dependencies	2026-08-17T19:47:45.6671934Z Downloading markdown_it_py-3.0.0-py3-none-any.whl (87 kB)
+build	Install dependencies	2026-08-17T19:47:45.6834217Z Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+build	Install dependencies	2026-08-17T19:47:45.7000662Z Downloading tomli-2.4.1-py3-none-any.whl (14 kB)
+build	Install dependencies	2026-08-17T19:47:45.7174957Z Downloading tomlkit-0.15.1-py3-none-any.whl (49 kB)
+build	Install dependencies	2026-08-17T19:47:45.7364435Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+build	Install dependencies	2026-08-17T19:47:45.7529189Z Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+build	Install dependencies	2026-08-17T19:47:45.7691953Z Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+build	Install dependencies	2026-08-17T19:47:45.7857128Z Downloading tzdata-2026.3-py2.py3-none-any.whl (348 kB)
+build	Install dependencies	2026-08-17T19:47:45.9451735Z Installing collected packages: nose, mccabe, honcho, zipp, wrapt, Werkzeug, urllib3, tzdata, typing-extensions, tomlkit, tomli, python-dotenv, PySocks, Pygments, pyflakes, pycodestyle, psycopg2-binary, platformdirs, pathspec, mypy-extensions, mdurl, MarkupSafe, lazy-object-proxy, itsdangerous, isort, idna, gunicorn, greenlet, dill, defusedxml, coverage, colorama, click, charset-normalizer, certifi, SQLAlchemy, requests, pinocchio, multidict, markdown-it-py, Jinja2, importlib-metadata, flake8, Faker, black, astroid, rich, requests-toolbelt, pylint, Flask, factory-boy, httpie, Flask-SQLAlchemy
+build	Install dependencies	2026-08-17T19:47:51.5108721Z 
+build	Install dependencies	2026-08-17T19:47:51.5203706Z Successfully installed Faker-37.12.0 Flask-2.1.2 Flask-SQLAlchemy-2.5.1 Jinja2-3.1.6 MarkupSafe-3.0.3 PySocks-1.7.1 Pygments-2.21.0 SQLAlchemy-1.4.46 Werkzeug-2.1.2 astroid-2.11.7 black-22.3.0 certifi-2026.7.22 charset-normalizer-3.5.1 click-8.1.8 colorama-0.4.6 coverage-6.3.2 defusedxml-0.7.1 dill-0.4.1 factory-boy-2.12.0 flake8-4.0.1 greenlet-3.2.5 gunicorn-20.1.0 honcho-1.1.0 httpie-3.2.1 idna-3.18 importlib-metadata-8.7.1 isort-5.13.2 itsdangerous-2.2.0 lazy-object-proxy-1.12.0 markdown-it-py-3.0.0 mccabe-0.6.1 mdurl-0.1.2 multidict-6.7.1 mypy-extensions-1.1.0 nose-1.3.7 pathspec-1.1.1 pinocchio-0.4.3 platformdirs-4.4.0 psycopg2-binary-2.9.3 pycodestyle-2.8.0 pyflakes-2.4.0 pylint-2.14.0 python-dotenv-0.20.0 requests-2.32.5 requests-toolbelt-1.0.0 rich-15.0.0 tomli-2.4.1 tomlkit-0.15.1 typing-extensions-4.16.0 tzdata-2026.3 urllib3-2.6.3 wrapt-1.17.3 zipp-3.23.1
+build	Install dependencies	2026-08-17T19:47:51.5209053Z WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+build	Lint with flake8	﻿2026-08-17T19:47:52.2324780Z ##[group]Run flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+build	Lint with flake8	2026-08-17T19:47:52.2325645Z [36;1mflake8 service --count --select=E9,F63,F7,F82 --show-source --statistics[0m
+build	Lint with flake8	2026-08-17T19:47:52.2326187Z [36;1mflake8 service --count --max-complexity=10 --max-line-length=127 --statistics[0m
+build	Lint with flake8	2026-08-17T19:47:52.2326719Z shell: sh -e {0}
+build	Lint with flake8	2026-08-17T19:47:52.2326937Z ##[endgroup]
+build	Lint with flake8	2026-08-17T19:47:52.5522230Z 0
+build	Lint with flake8	2026-08-17T19:47:52.7683630Z 0
+build	Run unit tests with nose	﻿2026-08-17T19:47:52.7908656Z ##[group]Run nosetests
+build	Run unit tests with nose	2026-08-17T19:47:52.7908954Z [36;1mnosetests[0m
+build	Run unit tests with nose	2026-08-17T19:47:52.7909290Z shell: sh -e {0}
+build	Run unit tests with nose	2026-08-17T19:47:52.7909509Z env:
+build	Run unit tests with nose	2026-08-17T19:47:52.7910070Z   DATABASE_URI: ***postgres:5432/testdb
+build	Run unit tests with nose	2026-08-17T19:47:52.7910366Z ##[endgroup]
+build	Run unit tests with nose	2026-08-17T19:47:53.6376093Z ........................
+build	Run unit tests with nose	2026-08-17T19:47:53.6376832Z ----------------------------------------------------------------------
+build	Run unit tests with nose	2026-08-17T19:47:53.6386924Z Ran 24 tests in 0.553s
+build	Run unit tests with nose	2026-08-17T19:47:53.6387167Z 
+build	Run unit tests with nose	2026-08-17T19:47:53.6387300Z OK
+build	Post Checkout	﻿2026-08-17T19:47:53.7339486Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+build	Post Checkout	2026-08-17T19:47:53.7341029Z Post job cleanup.
+build	Post Checkout	2026-08-17T19:47:53.7371532Z ##[command]/usr/bin/docker exec  a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af sh -c "cat /etc/*release | grep ^ID"
+build	Post Checkout	2026-08-17T19:47:53.9403706Z (node:93) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+build	Post Checkout	2026-08-17T19:47:53.9404865Z (Use `node --trace-deprecation ...` to show where the warning was created)
+build	Stop containers	﻿2026-08-17T19:47:53.9543631Z Stop and remove container: fd6f502291a5475cb0ab3a6560372798_python39slim_f031b6
+build	Stop containers	2026-08-17T19:47:53.9548870Z ##[command]/usr/bin/docker rm --force a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Stop containers	2026-08-17T19:47:54.4255806Z a5f67395f60b8c9e23595abae865343152d1611d8f9d3950529655342f18a1af
+build	Stop containers	2026-08-17T19:47:54.4281107Z Print service container logs: e5b2d34c085645fcb551fe6dfc4f57dd_postgresalpine_1e1985
+build	Stop containers	2026-08-17T19:47:54.4290222Z ##[command]/usr/bin/docker logs --details 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Stop containers	2026-08-17T19:47:54.4427029Z  The files belonging to this database system will be owned by user "postgres".
+build	Stop containers	2026-08-17T19:47:54.4429355Z  sh: locale: not found
+build	Stop containers	2026-08-17T19:47:54.4429849Z  2026-08-17 19:47:21.001 UTC [40] WARNING:  no usable system locales were found
+build	Stop containers	2026-08-17T19:47:54.4430496Z  This user must also own the server process.
+build	Stop containers	2026-08-17T19:47:54.4431161Z  initdb: warning: enabling "trust" authentication for local connections
+build	Stop containers	2026-08-17T19:47:54.4432235Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+build	Stop containers	2026-08-17T19:47:54.4433339Z  2026-08-17 19:47:21.831 UTC [1] LOG:  starting PostgreSQL 18.6 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+build	Stop containers	2026-08-17T19:47:54.4434244Z  2026-08-17 19:47:21.831 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+build	Stop containers	2026-08-17T19:47:54.4434959Z  2026-08-17 19:47:21.831 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+build	Stop containers	2026-08-17T19:47:54.4435974Z  2026-08-17 19:47:21.832 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+build	Stop containers	2026-08-17T19:47:54.4436835Z  2026-08-17 19:47:21.836 UTC [68] LOG:  database system was shut down at 2026-08-17 19:47:21 UTC
+build	Stop containers	2026-08-17T19:47:54.4437918Z  2026-08-17 19:47:21.840 UTC [1] LOG:  database system is ready to accept connections
+build	Stop containers	2026-08-17T19:47:54.4438583Z  2026-08-17 19:47:30.511 UTC [78] FATAL:  role "root" does not exist
+build	Stop containers	2026-08-17T19:47:54.4439170Z  2026-08-17 19:47:40.562 UTC [85] FATAL:  role "root" does not exist
+build	Stop containers	2026-08-17T19:47:54.4439734Z  2026-08-17 19:47:50.607 UTC [92] FATAL:  role "root" does not exist
+build	Stop containers	2026-08-17T19:47:54.4440199Z  
+build	Stop containers	2026-08-17T19:47:54.4440601Z  The database cluster will be initialized with locale "en_US.utf8".
+build	Stop containers	2026-08-17T19:47:54.4441215Z  The default database encoding has accordingly been set to "UTF8".
+build	Stop containers	2026-08-17T19:47:54.4441639Z  The default text search configuration will be set to "english".
+build	Stop containers	2026-08-17T19:47:54.4441962Z  
+build	Stop containers	2026-08-17T19:47:54.4442166Z  Data page checksums are enabled.
+build	Stop containers	2026-08-17T19:47:54.4442410Z  
+build	Stop containers	2026-08-17T19:47:54.4442715Z  fixing permissions on existing directory /var/lib/postgresql/18/docker ... ok
+build	Stop containers	2026-08-17T19:47:54.4443114Z  creating subdirectories ... ok
+build	Stop containers	2026-08-17T19:47:54.4443429Z  selecting dynamic shared memory implementation ... posix
+build	Stop containers	2026-08-17T19:47:54.4443773Z  selecting default "max_connections" ... 100
+build	Stop containers	2026-08-17T19:47:54.4444078Z  selecting default "shared_buffers" ... 128MB
+build	Stop containers	2026-08-17T19:47:54.4444368Z  selecting default time zone ... UTC
+build	Stop containers	2026-08-17T19:47:54.4444633Z  creating configuration files ... ok
+build	Stop containers	2026-08-17T19:47:54.4444896Z  running bootstrap script ... ok
+build	Stop containers	2026-08-17T19:47:54.4445476Z  performing post-bootstrap initialization ... ok
+build	Stop containers	2026-08-17T19:47:54.4445857Z  syncing data to disk ... ok
+build	Stop containers	2026-08-17T19:47:54.4446080Z  
+build	Stop containers	2026-08-17T19:47:54.4446250Z  
+build	Stop containers	2026-08-17T19:47:54.4446474Z  Success. You can now start the database server using:
+build	Stop containers	2026-08-17T19:47:54.4446767Z  
+build	Stop containers	2026-08-17T19:47:54.4447010Z      pg_ctl -D /var/lib/postgresql/18/docker -l logfile start
+build	Stop containers	2026-08-17T19:47:54.4447313Z  
+build	Stop containers	2026-08-17T19:47:54.4447915Z  waiting for server to start....2026-08-17 19:47:21.544 UTC [46] LOG:  starting PostgreSQL 18.6 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+build	Stop containers	2026-08-17T19:47:54.4448710Z  2026-08-17 19:47:21.544 UTC [46] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+build	Stop containers	2026-08-17T19:47:54.4449244Z  2026-08-17 19:47:21.547 UTC [52] LOG:  database system was shut down at 2026-08-17 19:47:21 UTC
+build	Stop containers	2026-08-17T19:47:54.4450044Z  2026-08-17 19:47:21.551 UTC [46] LOG:  database system is ready to accept connections
+build	Stop containers	2026-08-17T19:47:54.4450412Z   done
+build	Stop containers	2026-08-17T19:47:54.4450600Z  server started
+build	Stop containers	2026-08-17T19:47:54.4450801Z  CREATE DATABASE
+build	Stop containers	2026-08-17T19:47:54.4450990Z  
+build	Stop containers	2026-08-17T19:47:54.4451159Z  
+build	Stop containers	2026-08-17T19:47:54.4451465Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+build	Stop containers	2026-08-17T19:47:54.4451849Z  
+build	Stop containers	2026-08-17T19:47:54.4452198Z  waiting for server to shut down....2026-08-17 19:47:21.706 UTC [46] LOG:  received fast shutdown request
+build	Stop containers	2026-08-17T19:47:54.4452718Z  2026-08-17 19:47:21.707 UTC [46] LOG:  aborting any active transactions
+build	Stop containers	2026-08-17T19:47:54.4453280Z  2026-08-17 19:47:21.711 UTC [46] LOG:  background worker "logical replication launcher" (PID 55) exited with exit code 1
+build	Stop containers	2026-08-17T19:47:54.4453793Z  2026-08-17 19:47:21.711 UTC [50] LOG:  shutting down
+build	Stop containers	2026-08-17T19:47:54.4454192Z  2026-08-17 19:47:21.712 UTC [50] LOG:  checkpoint starting: shutdown immediate
+build	Stop containers	2026-08-17T19:47:54.4468285Z  2026-08-17 19:47:21.728 UTC [50] LOG:  checkpoint complete: wrote 943 buffers (5.8%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.015 s, sync=0.002 s, total=0.017 s; sync files=303, longest=0.001 s, average=0.001 s; distance=4362 kB, estimate=4362 kB; lsn=0/1BA8860, redo lsn=0/1BA8860
+build	Stop containers	2026-08-17T19:47:54.4469697Z  2026-08-17 19:47:21.740 UTC [46] LOG:  database system is shut down
+build	Stop containers	2026-08-17T19:47:54.4470025Z   done
+build	Stop containers	2026-08-17T19:47:54.4470212Z  server stopped
+build	Stop containers	2026-08-17T19:47:54.4470407Z  
+build	Stop containers	2026-08-17T19:47:54.4470646Z  PostgreSQL init process complete; ready for start up.
+build	Stop containers	2026-08-17T19:47:54.4470947Z  
+build	Stop containers	2026-08-17T19:47:54.4475046Z Stop and remove container: e5b2d34c085645fcb551fe6dfc4f57dd_postgresalpine_1e1985
+build	Stop containers	2026-08-17T19:47:54.4476871Z ##[command]/usr/bin/docker rm --force 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Stop containers	2026-08-17T19:47:54.5819963Z 4de15b46c94f2799b50bee3e10c894e278a06364cd5dbd78237be89a41f01355
+build	Stop containers	2026-08-17T19:47:54.5842017Z Remove container network: github_network_1d5c6b439cc248ce99e2a7290cfc3df1
+build	Stop containers	2026-08-17T19:47:54.5846900Z ##[command]/usr/bin/docker network rm github_network_1d5c6b439cc248ce99e2a7290cfc3df1
+build	Stop containers	2026-08-17T19:47:54.6820822Z github_network_1d5c6b439cc248ce99e2a7290cfc3df1
+build	Complete job	﻿2026-08-17T19:47:54.6892685Z Cleaning up orphan processes
+build	Complete job	2026-08-17T19:47:54.7236454Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v2. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
