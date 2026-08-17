@@ -62,7 +62,16 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+@app.route("/accounts", methods=["GET"])
+def list_accounts():
+    """Returns a list of all Accounts"""
+    app.logger.info("Request to list Accounts")
 
+    accounts = Account.all()
+
+    results = [account.serialize() for account in accounts]
+
+    return jsonify(results), status.HTTP_200_OK
 
 ######################################################################
 # READ AN ACCOUNT
@@ -90,14 +99,44 @@ def get_account(account_id):
 
 
 # ... place you code here to UPDATE an account ...
+@app.route("/accounts/<int:account_id>", methods=["PUT"])
+def update_account(account_id):
+    """Updates an existing Account"""
+    app.logger.info("Request to update an Account with id: %s", account_id)
 
+    check_content_type("application/json")
+
+    account = Account.find(account_id)
+
+    if account is None:
+        abort(status.HTTP_404_NOT_FOUND, f"Account with id '{account_id}' was not found")
+
+    account.deserialize(request.get_json())
+    account.update()
+
+    return jsonify(account.serialize()), status.HTTP_200_OK
 
 ######################################################################
 # DELETE AN ACCOUNT
 ######################################################################
 
 # ... place you code here to DELETE an account ...
+@app.route("/accounts/<int:account_id>", methods=["DELETE"])
+def delete_account(account_id):
+    """Deletes an Account"""
+    app.logger.info("Request to delete an Account with id: %s", account_id)
 
+    account = Account.find(account_id)
+
+    if account is None:
+        abort(
+            status.HTTP_404_NOT_FOUND,
+            f"Account with id '{account_id}' was not found",
+        )
+
+    account.delete()
+
+    return "", status.HTTP_204_NO_CONTENT
 
 ######################################################################
 #  U T I L I T Y   F U N C T I O N S
