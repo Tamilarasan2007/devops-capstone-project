@@ -13,6 +13,7 @@ from . import app  # Import Flask application
 ############################################################
 # Health Endpoint
 ############################################################
+
 @app.route("/health")
 def health():
     """Health Status"""
@@ -22,6 +23,7 @@ def health():
 ######################################################################
 # GET INDEX
 ######################################################################
+
 @app.route("/")
 def index():
     """Root URL response"""
@@ -38,6 +40,8 @@ def index():
 ######################################################################
 # CREATE A NEW ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts", methods=["POST"])
 def create_accounts():
     """
@@ -62,6 +66,8 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """Returns a list of all Accounts"""
@@ -76,6 +82,8 @@ def list_accounts():
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts/<int:account_id>", methods=["GET"])
 def get_account(account_id):
     """
@@ -90,6 +98,8 @@ def get_account(account_id):
         abort(status.HTTP_404_NOT_FOUND, f"Account with id '{account_id}' was not found")
 
     return jsonify(account.serialize()), status.HTTP_200_OK
+
+
 # ... place you code here to READ an account ...
 
 
@@ -99,6 +109,8 @@ def get_account(account_id):
 
 
 # ... place you code here to UPDATE an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["PUT"])
 def update_account(account_id):
     """Updates an existing Account"""
@@ -121,6 +133,8 @@ def update_account(account_id):
 ######################################################################
 
 # ... place you code here to DELETE an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_account(account_id):
     """Deletes an Account"""
